@@ -134,7 +134,7 @@ int Master::Run()
     sLog->outString("  	  AzerothCore 3.3.5a  -  www.azerothcore.org\n");
 
 #ifdef _WIN32
-    System("PAUSE");
+    system("PAUSE");
 #endif
 
     /// worldserver PID file creation
