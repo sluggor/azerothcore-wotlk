@@ -133,6 +133,10 @@ int Master::Run()
 
     sLog->outString("  	  AzerothCore 3.3.5a  -  www.azerothcore.org\n");
 
+#ifdef _WIN32
+    System("PAUSE");
+#endif
+
     /// worldserver PID file creation
     std::string pidFile = sConfigMgr->GetStringDefault("PidFile", "");
     if (!pidFile.empty())
