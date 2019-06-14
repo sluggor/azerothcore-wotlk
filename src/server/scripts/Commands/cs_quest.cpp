@@ -83,11 +83,19 @@ public:
         }
 
         // ok, normal (creature/GO starting) quest
-        if (player->CanAddQuest(quest, true))
-            player->AddQuestAndCheckCompletion(quest, nullptr);
+		if (player->CanAddQuest(quest, true))
+		{
+			if(player->IsQuestRewarded(quest->GetQuestId()))
+			{
+				// Remove record of being rewarded or quest cannot be completed...
+				player->RemoveRewardedQuest(quest->GetQuestId());
+			}
+		}
+		
+		player->AddQuestAndCheckCompletion(quest, nullptr);
 
-        return true;
-    }
+		return true;
+	}
 
     static bool HandleQuestRemove(ChatHandler* handler, const char* args)
     {
